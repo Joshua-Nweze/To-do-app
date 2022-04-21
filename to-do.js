@@ -10,6 +10,10 @@ add_btn.addEventListener("click", () => {
 
         let todoTag = document.createElement('div')
         todoTag.classList.add('input-group', 'mb-2')
+        
+        let check = document.createElement('input')
+        check.type = "checkbox"
+        check.classList.add('form-check-input', 'm-3')
 
         let todos = document.createElement('input')
         todos.value = add_text.value
@@ -18,7 +22,7 @@ add_btn.addEventListener("click", () => {
         
         todos.innerHTML = add_text.value
         document.getElementById('add-text').value = ""
-        console.log(todos);
+        // console.log(todos);
 
         let editBtn = document.createElement('button')
         editBtn.innerHTML = "EDIT"
@@ -28,13 +32,23 @@ add_btn.addEventListener("click", () => {
         deleteBtn.innerHTML = "DELETE"
         deleteBtn.classList.add('btn-danger', 'btn', 'float-end')
 
+        check.addEventListener('click', () => {
+            if (check.checked) {
+                todos.setAttribute('style', 'text-decoration: line-through;')
+                todos.classList.add('text-muted')
+            } else {
+                todos.removeAttribute('style', 'text-decoration: line-through;')
+                todos.classList.remove('text-muted')
+            }
+        })
+
         editBtn.addEventListener('click', () => {
             if (editBtn.innerHTML == 'EDIT') {
                 todos.removeAttribute('readonly', 'readonly')
                 editBtn.innerHTML = 'SAVE'
                 todos.classList.add('border-0')
                 todos.focus()
-                console.log("edid");
+                // console.log("edid");
             } else {
                 editBtn.innerText = 'EDIT'
                 todos.setAttribute('readonly', 'readonly')
@@ -46,6 +60,7 @@ add_btn.addEventListener("click", () => {
         })
 
         container.appendChild(todoTag)
+        todoTag.appendChild(check)
         todoTag.appendChild(todos)
         todoTag.appendChild(editBtn)
         todoTag.appendChild(deleteBtn)
