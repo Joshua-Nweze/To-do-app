@@ -1,7 +1,7 @@
 # To-do-app
 A simple to-do web app
 
-#Functionalities include:
+#Functionalities includes:
 
 Add to-do task,
 Edit to-do task,
